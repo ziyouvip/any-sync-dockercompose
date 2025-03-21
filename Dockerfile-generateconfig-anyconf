@@ -1,5 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/ziyouvip/golang:1.23-alpine
-RUN apk add --no-cache bash yq
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add --no-cache bash yq
+# 设置 Go 代理
+ENV GOPROXY=https://goproxy.cn,direct
 RUN go install github.com/anyproto/any-sync-tools/anyconf@latest
 WORKDIR /code
 ENTRYPOINT ["bash", "/code/docker-generateconfig/anyconf.sh"]
