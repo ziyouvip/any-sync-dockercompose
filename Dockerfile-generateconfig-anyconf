@@ -1,5 +1,4 @@
-# syntax=docker/dockerfile:1
-FROM golang:1.23-alpine
+FROM registry.cn-hangzhou.aliyuncs.com/ziyouvip/golang:1.23-alpine
 RUN apk add --no-cache bash yq
 RUN go install github.com/anyproto/any-sync-tools/anyconf@latest
 WORKDIR /code
