@@ -98,7 +98,7 @@ services:
     command: ["/bin/any-sync-confapply", "-c", "/etc/any-sync-coordinator/config.yml", "-n", "/etc/any-sync-coordinator/network.yml", "-e"]
 
   any-sync-coordinator:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-coordinator:${ANY_SYNC_COORDINATOR_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-coordinator:latest"
     depends_on:
       generateconfig-processing:
         condition: service_completed_successfully
@@ -120,7 +120,7 @@ services:
     restart: unless-stopped
 
   any-sync-filenode:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-filenode:${ANY_SYNC_FILENODE_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-filenode:latest"
     depends_on:
       redis:
         condition: service_healthy
@@ -143,7 +143,7 @@ services:
     restart: unless-stopped
 
   any-sync-node-1:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-node:${ANY_SYNC_NODE_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-node:latest"
     depends_on:
       any-sync-coordinator:
         condition: service_started
@@ -164,7 +164,7 @@ services:
     restart: unless-stopped
 
   any-sync-node-2:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-node:${ANY_SYNC_NODE_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-node:latest"
     depends_on:
       any-sync-coordinator:
         condition: service_started
@@ -185,7 +185,7 @@ services:
     restart: unless-stopped
 
   any-sync-node-3:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-node:${ANY_SYNC_NODE_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-node:latest"
     depends_on:
       any-sync-coordinator:
         condition: service_started
@@ -206,7 +206,7 @@ services:
     restart: unless-stopped
 
   any-sync-consensusnode:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-consensusnode:${ANY_SYNC_CONSENSUSNODE_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-consensusnode:latest"
     depends_on:
       any-sync-coordinator:
         condition: service_started
@@ -225,7 +225,7 @@ services:
 
   # any-sync-netcheck
   netcheck:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-tools:${ANY_SYNC_TOOLS_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-tools:latest"
     pull_policy: always
     restart: unless-stopped
     depends_on:
