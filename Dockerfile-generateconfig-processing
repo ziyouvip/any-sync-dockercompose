@@ -1,4 +1,5 @@
 FROM registry.cn-hangzhou.aliyuncs.com/ziyouvip/alpine:3.18.4
-RUN apk add --no-cache bash yq perl python3 py3-yaml
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+    && apk add --no-cache bash yq perl python3 py3-yaml
 WORKDIR /code
 ENTRYPOINT ["bash", "/code/docker-generateconfig/processing.sh"]
