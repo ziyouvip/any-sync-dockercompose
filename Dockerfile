@@ -1,4 +1,4 @@
-FROM golang:1.22
+FROM registry.cn-hangzhou.aliyuncs.com/ziyouvip/golang:1.22
 
 ARG REPO_DIR=.
 
