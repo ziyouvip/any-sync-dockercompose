@@ -75,7 +75,7 @@ services:
       - "127.0.0.1:${EXTERNAL_MINIO_WEB_PORT}:${MINIO_WEB_PORT}"
 
   create-bucket:
-    image: registry.cn-hangzhou.aliyuncs.com/ziyouvip/minio/mc:latest
+    image: registry.cn-hangzhou.aliyuncs.com/ziyouvip/mc:latest
     depends_on:
       - minio
     entrypoint: >
@@ -86,7 +86,7 @@ services:
       "
 
   any-sync-coordinator_bootstrap:
-    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-coordinator:${ANY_SYNC_COORDINATOR_VERSION}"
+    image: "registry.cn-hangzhou.aliyuncs.com/ziyouvip/any-sync-coordinator:latest"
     depends_on:
       generateconfig-processing:
         condition: service_completed_successfully
